@@ -1,10 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.css";
-import cn from "classnames"
+import cn from "classnames";
 
 const Button = ({ children, onClick, className }) => {
-  return <button className={cn(styles.button, className)}>{children}</button>;
+  return (
+    <button className={cn(styles.button, className)} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 Button.propTypes = {
