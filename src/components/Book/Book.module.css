@@ -56,3 +56,29 @@
   object-fit: cover;
   object-position: center;
 }
+
+@media screen and (max-width: 767px) {
+  .body {
+    flex-direction: column-reverse;
+  }
+
+  .image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  .image img {
+    height: 12rem;
+    width: 8rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem 0;
+  }
+}

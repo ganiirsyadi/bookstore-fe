@@ -1,11 +1,13 @@
 .body {
   padding: 2rem;
+  padding-top: 0;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 1rem 0;
 }
 
 .row > h5 {
@@ -14,4 +16,10 @@
 
 .row > h5 span {
   margin-left: 1rem;
+}
+
+@media screen and (max-width: 767px) {
+  .body {
+    margin: 0;
+  }
 }
