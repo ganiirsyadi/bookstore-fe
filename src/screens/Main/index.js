@@ -20,7 +20,11 @@ function Main() {
           <h5>
             Books <span>(54)</span>
           </h5>
-          <Button className={styles.button} onClick={() => setShowModal(true)}>
+          <Button
+            data-testid="button_add_+"
+            className={styles.button}
+            onClick={() => setShowModal(true)}
+          >
             Add +
           </Button>
         </div>
