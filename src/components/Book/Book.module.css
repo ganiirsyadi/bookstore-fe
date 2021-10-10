@@ -9,7 +9,7 @@
 }
 
 .flex {
-  display: flex;
+  display: none;
   justify-content: flex-end;
 }
 
@@ -29,7 +29,7 @@
   font-size: 14px;
 }
 
-.more {
+.flex > p {
   font-size: 16px !important;
   margin-top: 1rem !important;
   margin-bottom: 0;
@@ -37,6 +37,7 @@
   font-weight: 600;
   border-bottom: 1px solid black;
   width: fit-content;
+  cursor: pointer;
 }
 
 .grid {
@@ -96,6 +97,10 @@
   
   .grid {
     display: none;
+  }
+
+  .flex {
+    display: flex;
   }
 }
 
