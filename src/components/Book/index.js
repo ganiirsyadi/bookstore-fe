@@ -33,7 +33,6 @@ const Book = ({ data }) => {
         <div className={styles.flex}>
           <p
             onClick={() => setIsActive((prev) => !prev)}
-            className={styles.more}
           >
             {isActive ? "Hide details" : "View details"}
           </p>
