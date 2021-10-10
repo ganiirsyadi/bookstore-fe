@@ -35,7 +35,7 @@ export const bookSlice = createSlice({
       })
       .addCase(addBookAsync.fulfilled, (state, action) => {
         state.status = STATUS.success;
-        state.data.push(action.payload);
+        state.data = [...state.data, action.payload]
       });
   },
 });
