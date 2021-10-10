@@ -10,20 +10,15 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getCountryAsync } from "../../../features/country/countrySlice";
 import { STATUS } from "../../../features/const";
-import {
-  addBookAsync,
-  selectBookStatus,
-} from "../../../features/book/bookSlice";
-import Spinner from "../../../components/Spinner";
+import { addBookAsync } from "../../../features/book/bookSlice";
 
 const FormAddBook = ({ onSubmit }) => {
   const { data: countries, status: countryStatus } = useSelector(
     (state) => state.country
   );
-  const bookStatus = useSelector(selectBookStatus);
   const dispatch = useDispatch();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
     if (countries?.length === 0) {
@@ -32,8 +27,8 @@ const FormAddBook = ({ onSubmit }) => {
   }, [countries, dispatch]);
 
   const submit = async (data) => {
-    console.log(data);
-    await dispatch(addBookAsync(data));
+    dispatch(addBookAsync(data));
+    reset();
     onSubmit();
   };
 
@@ -78,13 +73,7 @@ const FormAddBook = ({ onSubmit }) => {
         loading={countryStatus === STATUS.loading}
         {...register("country")}
       />
-      <Button className={styles.button}>
-        {bookStatus === STATUS.posting ? (
-          <Spinner size="s" type="secondary" />
-        ) : (
-          "Submit"
-        )}
-      </Button>
+      <Button className={styles.button}>Submit</Button>
     </form>
   );
 };
