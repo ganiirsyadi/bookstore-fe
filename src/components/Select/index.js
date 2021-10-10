@@ -10,9 +10,10 @@ const Select = React.forwardRef(
         onChange={onChange}
         defaultValue={defaultValue}
         ref={ref}
+        {...props}
       >
         {options?.map((el, i) => (
-          <option key={i} value={el}>
+          <option data-testid="option" key={i} value={el}>
             {el}
           </option>
         ))}

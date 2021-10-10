@@ -15,7 +15,7 @@ const BookList = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.column}>
+    <div className={styles.column} data-testid="booklist">
       {status === STATUS.loading ? (
         <Spinner size="l" className={styles.spinner} />
       ) : (

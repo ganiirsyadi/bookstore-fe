@@ -1,27 +1,61 @@
-import React from 'react'
-// We're using our own custom render function and not RTL's render.
-// Our custom utils also re-export everything from RTL
-// so we can import fireEvent and screen here as well
-import { render, fireEvent, screen } from '../../lib/testUtils'
-import Main from "./index"
+import React from "react";
+import "@testing-library/jest-dom/extend-expect";
+import userEvent from "@testing-library/user-event";
+import { render, fireEvent, screen } from "../../lib/testUtils";
+import Main from "./index";
+import { act } from "react-dom/test-utils";
 
-// We use msw to intercept the network request during the test,
-// and return the response 'John Smith' after 150ms
-// when receiving a get request to the `/api/user` endpoint
+const UNIQUE_NUMBER = new Date().getTime();
 
-test('fetches & receives books', async () => {
-  render(<Main />)
+beforeEach(() => {
+  jest.resetModules(); // Most important - it clears the cache
+  process.env = { DEBUG_PRINT_LIMIT: 0 }; // Make a copy
+});
 
-  // should show no user initially, and not be fetching a user
-  expect(screen.getByText(/no user/i)).toBeInTheDocument()
-  expect(screen.queryByText(/Fetching user\.\.\./i)).not.toBeInTheDocument()
+test("It should be able to show main page", async () => {
+  render(<Main />);
 
-  // after clicking the 'Fetch user' button, it should now show that it is fetching the user
-  fireEvent.click(screen.getByRole('button', { name: /Fetch user/i }))
-  expect(screen.getByText(/no user/i)).toBeInTheDocument()
+  // Header and add button are visible
+  expect(screen.getByTestId("header")).toHaveTextContent("BOOK STORE");
+  expect(screen.getByTestId("button_add_+")).toHaveTextContent("Add +");
+});
 
-  // after some time, the user should be received
-  expect(await screen.findByText(/John Smith/i)).toBeInTheDocument()
-  expect(screen.queryByText(/no user/i)).not.toBeInTheDocument()
-  expect(screen.queryByText(/Fetching user\.\.\./i)).not.toBeInTheDocument()
-})
+test("It should be able to render the modal form", async () => {
+  render(<Main />);
+
+  const addButton = screen.getByTestId("button_add_+");
+
+  act(() => fireEvent.click(addButton));
+
+  expect(await screen.findByText(`Add Book`)).toBeInTheDocument();
+
+  fireEvent.input(screen.getByTestId("name_field"), {
+    target: { value: `A Book ${UNIQUE_NUMBER}` },
+  });
+  fireEvent.input(screen.getByTestId("author_field"), {
+    target: { value: "Gani" },
+  });
+  fireEvent.input(screen.getByTestId("isbn_field"), {
+    target: { value: `${UNIQUE_NUMBER}` },
+  });
+  fireEvent.input(screen.getByTestId("published_on_field"), {
+    target: { value: "2021-10-11T01:56" },
+  });
+  fireEvent.input(screen.getByTestId("number_of_pages_field"), {
+    target: { value: "2" },
+  });
+
+  expect(
+    (await screen.findAllByRole("option", {}, { timeout: 5000 })).length
+  ).toBeGreaterThan(2);
+
+  expect(screen.getByTestId("submit_button")).toBeVisible()
+});
+
+test("It should be able to show list of books", async () => {
+  render(<Main />);
+
+  expect(
+    (await screen.findAllByText(/Book by/i, {}, { timeout: 5000 })).length
+  ).toBeGreaterThan(0);
+});

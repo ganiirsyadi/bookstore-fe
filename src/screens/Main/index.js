@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "../../components/Button";
 import Header from "../../components/Header";
 import styles from "./Main.module.css";
@@ -8,9 +9,12 @@ import { BiChevronUp } from "react-icons/bi";
 import Modal from "../../components/Modal";
 import { useState } from "react";
 import FormAddBook from "./FormAddBook";
+import { useSelector } from "react-redux";
+import { selectBook } from "../../features/book/bookSlice";
 
 function Main() {
   const [showModal, setShowModal] = useState(false);
+  const books = useSelector(selectBook);
 
   return (
     <>
@@ -18,7 +22,7 @@ function Main() {
       <div className={cn("container", styles.body)}>
         <div className={styles.row}>
           <h5>
-            Books <span>(54)</span>
+            Books <span>({books ? books.length : "loading"})</span>
           </h5>
           <Button
             data-testid="button_add_+"
