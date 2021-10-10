@@ -1,0 +1,44 @@
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #fd6e81;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  animation: spin 1.75s linear infinite;
+  margin: auto;
+  display: block;
+}
+
+.secondary {
+  border-top-color: #893a45 !important;
+}
+
+.s {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #fd6e81;
+  width: 14px;
+  height: 14px;
+}
+
+.l {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #fd6e81;
+  width: 54px;
+  height: 54px;
+}
+
+.xl {
+  border: 14px solid #f3f3f3;
+  border-top: 14px solid #fd6e81;
+  width: 96px;
+  height: 96px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

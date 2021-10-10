@@ -31,7 +31,7 @@ function Main() {
         isOpen={showModal}
         onClose={() => setShowModal(false)}
       >
-        <FormAddBook />
+        <FormAddBook onSubmit={() => setShowModal(false)} />
       </Modal>
       <Button className={styles.chevron} onClick={scrollToTop}>
         <BiChevronUp size={32} />

@@ -1,3 +1,7 @@
 .column {
   width: 100%;
 }
+
+.spinner {
+  margin-top: 8rem !important;
+}

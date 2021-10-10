@@ -16,3 +16,7 @@
   outline: 0;
   border: 2px solid #b0b0b0;
 }
+
+.select:invalid {
+  color: #9b9b9b;
+}
