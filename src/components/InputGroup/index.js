@@ -12,7 +12,6 @@ const InputGroup = ({
   errorMessage,
   ...props
 }) => {
-  console.log(props);
   return (
     <div className={styles.group}>
       <label htmlFor={label ? label.replace(" ", "_") : ""}>{label}</label>
