@@ -18,8 +18,57 @@
   margin-left: 1rem;
 }
 
+.button {
+  display: block;
+}
+
+.chevron {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem;
+  border-radius: 50%;
+  width: calc(2rem + 20px);
+  height: calc(2rem + 20px);
+}
+
+.chevron svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.floating {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  width: calc(100% - 8rem);
+  max-width: 20rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  padding: 1rem;
+}
+
+.floating:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
 @media screen and (max-width: 767px) {
   .body {
     margin: 0;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .chevron {
+    display: none;
+  }
+
+  .floating {
+    display: block;
   }
 }

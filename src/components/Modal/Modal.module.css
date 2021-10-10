@@ -1,0 +1,52 @@
+.overlay {
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  z-index: -1;
+  transition: 0.15s ease-out;
+  padding: 4rem 0; 
+}
+
+.overlay.active {
+  opacity: 1;
+  z-index: 5;
+  transition: 0.15s ease-in;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 4px;
+  min-width: 800px;
+}
+
+.header {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #D6D6D6;
+  position: relative;
+}
+
+.header > h4 {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+}
+
+.header svg {
+  position: absolute;
+  right: 1.5rem;
+  cursor: pointer;
+}
+
+.body {
+  padding: 1.5rem;
+}
