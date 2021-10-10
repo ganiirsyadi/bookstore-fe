@@ -8,6 +8,11 @@
   -moz-box-shadow: 0px 0px 64px 0px var(--shadow);
 }
 
+.flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .description {
   width: 100%;
 }
@@ -24,11 +29,25 @@
   font-size: 14px;
 }
 
+.more {
+  font-size: 16px !important;
+  margin-top: 1rem !important;
+  margin-bottom: 0;
+  text-align: end;
+  font-weight: 600;
+  border-bottom: 1px solid black;
+  width: fit-content;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 2rem;
   margin-top: 2rem;
+}
+
+.grid.active {
+  display: grid;
 }
 
 .grid h6 {
@@ -73,6 +92,10 @@
   .image img {
     height: 12rem;
     width: 8rem;
+  }
+  
+  .grid {
+    display: none;
   }
 }
 

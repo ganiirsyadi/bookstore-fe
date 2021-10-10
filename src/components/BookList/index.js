@@ -7,7 +7,7 @@ const BookList = () => {
   return (
     <div className={styles.column}>
       {books.map((elem) => (
-        <Book data={elem} />
+        <Book key={elem.id} data={elem} />
       ))}
     </div>
   );
