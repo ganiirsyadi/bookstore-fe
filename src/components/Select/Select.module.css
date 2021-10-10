@@ -1,0 +1,18 @@
+.select {
+  padding: 1rem;
+  background-color: #f6f6f6;
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  width: 100%;
+  cursor: pointer;
+  color: black;
+}
+
+.select::placeholder {
+  color: #9b9b9b;
+}
+
+.select:focus-visible {
+  outline: 0;
+  border: 2px solid #b0b0b0;
+}

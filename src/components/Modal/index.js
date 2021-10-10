@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import styles from "./Modal.module.css";
 import { VscClose } from "react-icons/vsc";
 import cn from "classnames";

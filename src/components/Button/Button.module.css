@@ -20,3 +20,9 @@
   transform: scale(0.975);
   transform-origin: center;
 }
+
+@media screen and (max-width: 767px) {
+  .button {
+    opacity: 1;
+  }
+}

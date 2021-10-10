@@ -50,3 +50,25 @@
 .body {
   padding: 1.5rem;
 }
+
+@media screen and (max-width: 1024px) {
+  .modal {
+    min-width: 80%;
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .modal {
+    max-width: 90%;
+  }
+
+  .header {
+    padding: 1rem;
+  }
+  
+  .header svg {
+    height: 28px;
+    right: 1rem;
+  }
+}
