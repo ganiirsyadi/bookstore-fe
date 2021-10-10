@@ -2,12 +2,12 @@ import Button from "../../components/Button";
 import Header from "../../components/Header";
 import styles from "./Main.module.css";
 import cn from "classnames";
-import BookList from "../../components/BookList";
+import BookList from "./BookList";
 import { scrollToTop } from "../../lib/scroll";
 import { BiChevronUp } from "react-icons/bi";
 import Modal from "../../components/Modal";
 import { useState } from "react";
-import FormAddBook from "../../components/FormAddBook";
+import FormAddBook from "./FormAddBook";
 
 function Main() {
   const [showModal, setShowModal] = useState(false);

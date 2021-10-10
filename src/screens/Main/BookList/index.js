@@ -1,5 +1,5 @@
 import React from "react";
-import { books } from "../../mocks/books";
+import { books } from "../../../mocks/books";
 import Book from "../Book";
 import styles from "./BookList.module.css";
 

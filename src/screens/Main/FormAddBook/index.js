@@ -1,15 +1,14 @@
 import React from "react";
-import { countries } from "../../mocks/countries";
-import Button from "../Button";
-import InputGroup from "../InputGroup";
-import SelectGroup from "../SelectGroup";
+import Button from "../../../components/Button";
+import { countries } from "../../../mocks/countries";
 import styles from "./FormAddBook.module.css";
+import InputGroup from "../../../components/InputGroup";
+import SelectGroup from "../../../components/SelectGroup";
 
 const COUNTRY_OPTIONS = countries.map((el) => el.name);
 
 const FormAddBook = () => {
-
-  const submit = () => console.log("submitted")
+  const submit = () => console.log("submitted");
 
   return (
     <form style={styles.form} onSubmit={submit}>
