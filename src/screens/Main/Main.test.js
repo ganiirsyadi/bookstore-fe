@@ -44,6 +44,9 @@ test("It should be able to render the modal form", async () => {
   fireEvent.input(screen.getByTestId("number_of_pages_field"), {
     target: { value: "2" },
   });
+  fireEvent.input(screen.getByTestId("image_url_field"), {
+    target: { value: "https://picsum.photos/200/300" },
+  });
 
   expect(
     (await screen.findAllByRole("option", {}, { timeout: 5000 })).length

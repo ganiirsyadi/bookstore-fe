@@ -18,7 +18,12 @@ const FormAddBook = ({ onSubmit }) => {
   const countries = useSelector(selectCountry);
   const dispatch = useDispatch();
 
-  const { register, handleSubmit, reset, formState: {errors} } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     if (countries?.length === 0) {
@@ -57,7 +62,7 @@ const FormAddBook = ({ onSubmit }) => {
       />
       <InputGroup
         label="Published on"
-        type="datetime-local"
+        type="datetime"
         required
         {...register("publishedOn")}
         data-testid="published_on_field"
@@ -71,6 +76,13 @@ const FormAddBook = ({ onSubmit }) => {
         {...register("numberOfPages")}
         data-testid="number_of_pages_field"
       />
+      <InputGroup
+        label="Image Url"
+        type="datetime"
+        required
+        {...register("imageUrl")}
+        data-testid="image_url_field"
+      />
       <SelectGroup
         defaultValue="Indonesia"
         label="Country Publisher"
@@ -78,7 +90,11 @@ const FormAddBook = ({ onSubmit }) => {
         {...register("country")}
         data-testid="country_field"
       />
-      <Button data-testid="submit_button" className={styles.button} onClick={() => console.log(errors)}>
+      <Button
+        data-testid="submit_button"
+        className={styles.button}
+        onClick={() => console.log(errors)}
+      >
         Submit
       </Button>
     </form>
