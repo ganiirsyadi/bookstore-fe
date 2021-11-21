@@ -78,7 +78,8 @@ const FormAddBook = ({ onSubmit }) => {
       />
       <InputGroup
         label="Image Url"
-        type="datetime"
+        type="text"
+        placeholder="https://example.com/image.jpg"
         required
         {...register("imageUrl")}
         data-testid="image_url_field"
