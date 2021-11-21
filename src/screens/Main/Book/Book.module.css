@@ -47,11 +47,7 @@
 
 .votes span {
   font-size: 12px;
-  padding: 2px;
-}
-
-.votes span:nth-child(2) {
-  margin-bottom: 2px;
+  padding: 4px;
 }
 
 .flex > p {

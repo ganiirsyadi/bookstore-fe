@@ -17,7 +17,6 @@ const Book = ({ data }) => {
         <div className={styles.top}>
           <div className={styles.votes}>
             <BsFillArrowUpSquareFill size="20" color="#fd6e81" />
-            <span>20</span>
             <span>10</span>
             <BsFillArrowDownSquareFill size="20" color="#cccccc"/>
           </div>
