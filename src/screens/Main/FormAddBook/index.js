@@ -62,7 +62,7 @@ const FormAddBook = ({ onSubmit }) => {
       />
       <InputGroup
         label="Published on"
-        type="datetime"
+        type="date"
         required
         {...register("publishedOn")}
         data-testid="published_on_field"
