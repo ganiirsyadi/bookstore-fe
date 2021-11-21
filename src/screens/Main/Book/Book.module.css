@@ -18,16 +18,40 @@
   width: 100%;
 }
 
-.description > h4 {
+.top {
+  display: flex;
+  align-items: center;
+}
+
+.title > h4 {
   font-size: 24px;
   margin: 0;
   margin-bottom: 0.2rem;
   text-transform: capitalize;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
-.description > p {
+.title > p {
   margin: 0;
   font-size: 14px;
+}
+
+.votes {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-right: 1rem;
+}
+
+.votes span {
+  font-size: 12px;
+  padding: 2px;
+}
+
+.votes span:nth-child(2) {
+  margin-bottom: 2px;
 }
 
 .flex > p {
@@ -105,6 +129,9 @@
 }
 
 @media screen and (max-width: 576px) {
+  .title > h4 {
+    font-size: 14px;
+  }
   .grid {
     grid-template-columns: 1fr;
     gap: 1rem 0;

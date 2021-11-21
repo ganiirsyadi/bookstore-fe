@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import { formatDate } from "../../../lib/date";
 import styles from "./Book.module.css";
 import cn from "classnames";
+import {
+  BsFillArrowUpSquareFill,
+  BsFillArrowDownSquareFill,
+} from "react-icons/bs";
 
 const Book = ({ data }) => {
   const [isActive, setIsActive] = useState(false);
@@ -10,8 +14,18 @@ const Book = ({ data }) => {
   return (
     <div className={styles.body}>
       <div className={styles.description}>
-        <h4>{data.title}</h4>
-        <p>Book by {data.author}</p>
+        <div className={styles.top}>
+          <div className={styles.votes}>
+            <BsFillArrowUpSquareFill size="20" color="#fd6e81" />
+            <span>20</span>
+            <span>10</span>
+            <BsFillArrowDownSquareFill size="20" color="#cccccc"/>
+          </div>
+          <div className={styles.title}>
+            <h4>{data.title}</h4>
+            <p>Book by {data.author}</p>
+          </div>
+        </div>
         <div className={cn(styles.grid, { [styles.active]: isActive })}>
           <div>
             <h6>ISBN</h6>
@@ -31,9 +45,7 @@ const Book = ({ data }) => {
           </div>
         </div>
         <div className={styles.flex}>
-          <p
-            onClick={() => setIsActive((prev) => !prev)}
-          >
+          <p onClick={() => setIsActive((prev) => !prev)}>
             {isActive ? "Hide details" : "View details"}
           </p>
         </div>
