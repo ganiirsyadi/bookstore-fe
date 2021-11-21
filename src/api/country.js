@@ -1,4 +1,6 @@
 import axios from "axios";
 
+const url = process.env.REACT_APP_API_URL + "/countries"
+
 export const getCountries = () =>
-  axios.get("https://5de759a9b1ad690014a4e21e.mockapi.io/api/v1/countries");
+  axios.get(url);
