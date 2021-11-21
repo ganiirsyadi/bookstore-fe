@@ -7,3 +7,9 @@ export const getBooks = () =>
 
 export const addBook = (data) =>
   axios.post(url, data);
+
+export const likeBook = (bookId) =>
+  axios.patch(url + "/like", {"book_id": bookId})
+
+export const dislikeBook = (bookId) =>
+  axios.patch(url + "/dislike", {"book_id": bookId})

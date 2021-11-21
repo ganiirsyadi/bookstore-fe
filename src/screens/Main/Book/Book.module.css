@@ -45,6 +45,10 @@
   padding-right: 1rem;
 }
 
+.votes svg {
+  cursor: pointer;
+}
+
 .votes span {
   font-size: 12px;
   padding: 4px;
