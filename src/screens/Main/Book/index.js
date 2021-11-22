@@ -12,10 +12,14 @@ import {
   dislikeBookAsync,
   likeBookAsync,
 } from "../../../features/book/bookSlice";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../features/user/userSlice";
+import { signInWithGoogle } from "../../../lib/auth";
 
 const Book = ({ data }) => {
   const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
+  const user = useSelector(selectUser)
 
   return (
     <div className={styles.body}>
@@ -25,13 +29,13 @@ const Book = ({ data }) => {
             <BsFillArrowUpSquareFill
               size="20"
               color={data.user_vote[0]?.vote === 1 ? "#fd6e81" : "#cccccc"}
-              onClick={() => dispatch(likeBookAsync(data.id))}
+              onClick={() => user ? dispatch(likeBookAsync(data.id)) : signInWithGoogle()}
             />
             <span>{data.likeCount}</span>
             <BsFillArrowDownSquareFill
               size="20"
               color={data.user_vote[0]?.vote === -1 ? "#fd6e81" : "#cccccc"}
-              onClick={() => dispatch(dislikeBookAsync(data.id))}
+              onClick={() => user ? dispatch(dislikeBookAsync(data.id)) : signInWithGoogle()}
             />
           </div>
           <div className={styles.title}>
