@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { useDispatch } from "react-redux";
 import { selectUser, signIn } from "../../features/user/userSlice";
+import axios from "axios";
 
 // Component
 function Main() {
@@ -26,8 +27,11 @@ function Main() {
 
   useEffect(() => {
     (async () => {
-      const user = await supabase.auth.user();
-      if (user) dispatch(signIn(user));
+      const session = await supabase.auth.session();
+      if (session) {
+        dispatch(signIn(session.user))
+        axios.defaults.headers.common['Authorization'] = `${session.token_type} ${session.access_token}`
+      };
     })();
   }, [dispatch, books]);
 
@@ -58,7 +62,9 @@ function Main() {
           <Button
             data-testid="button_add_+"
             className={styles.button}
-            onClick={() => setShowModal(true)}
+            onClick={() => {
+              user ? setShowModal(true) : signInWithGoogle()
+            }}
           >
             Add +
           </Button>
@@ -76,7 +82,9 @@ function Main() {
         <BiChevronUp size={32} />
       </Button>
       {!showModal && (
-        <Button className={styles.floating} onClick={() => setShowModal(true)}>
+        <Button className={styles.floating} onClick={() => {
+          user ? setShowModal(true) : signInWithGoogle()
+        }}>
           Add Book
         </Button>
       )}
