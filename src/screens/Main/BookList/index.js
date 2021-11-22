@@ -5,14 +5,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { getBookAsync } from "../../../features/book/bookSlice";
 import Spinner from "../../../components/Spinner";
 import { STATUS } from "../../../features/const";
+import { selectUser } from "../../../features/user/userSlice";
 
 const BookList = () => {
   const dispatch = useDispatch();
+  const user = useSelector(selectUser)
   const { data, status } = useSelector((state) => state.book);
 
   useEffect(() => {
     dispatch(getBookAsync());
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   return (
     <div className={styles.column} data-testid="booklist">

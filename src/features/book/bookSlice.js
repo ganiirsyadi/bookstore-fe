@@ -42,6 +42,9 @@ export const bookSlice = createSlice({
       .addCase(getBookAsync.pending, (state) => {
         state.status = STATUS.loading;
       })
+      .addCase(getBookAsync.rejected, (state) => {
+        state.status = STATUS.failed;
+      })
       .addCase(getBookAsync.fulfilled, (state, action) => {
         state.status = STATUS.success;
         state.data = action.payload;
@@ -55,12 +58,17 @@ export const bookSlice = createSlice({
       })
       .addCase(likeBookAsync.fulfilled, (state, action) => {
         state.status = STATUS.success;
-        const bookIndex = state.data.findIndex(book => book.id === action.payload?.id)
-        state.data[bookIndex] = action.payload      })
+        const bookIndex = state.data.findIndex(
+          (book) => book.id === action.payload?.id
+        );
+        state.data[bookIndex] = action.payload;
+      })
       .addCase(dislikeBookAsync.fulfilled, (state, action) => {
         state.status = STATUS.success;
-        const bookIndex = state.data.findIndex(book => book.id === action.payload?.id)
-        state.data[bookIndex] = action.payload
+        const bookIndex = state.data.findIndex(
+          (book) => book.id === action.payload?.id
+        );
+        state.data[bookIndex] = action.payload;
       });
   },
 });

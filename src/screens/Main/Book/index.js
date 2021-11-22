@@ -8,7 +8,10 @@ import {
   BsFillArrowDownSquareFill,
 } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { dislikeBookAsync, likeBookAsync } from "../../../features/book/bookSlice";
+import {
+  dislikeBookAsync,
+  likeBookAsync,
+} from "../../../features/book/bookSlice";
 
 const Book = ({ data }) => {
   const dispatch = useDispatch();
@@ -19,9 +22,17 @@ const Book = ({ data }) => {
       <div className={styles.description}>
         <div className={styles.top}>
           <div className={styles.votes}>
-            <BsFillArrowUpSquareFill size="20" color="#fd6e81" onClick={() => dispatch(likeBookAsync(data.id))} />
+            <BsFillArrowUpSquareFill
+              size="20"
+              color={data.user_vote[0]?.vote === 1 ? "#fd6e81" : "#cccccc"}
+              onClick={() => dispatch(likeBookAsync(data.id))}
+            />
             <span>{data.likeCount}</span>
-            <BsFillArrowDownSquareFill size="20" color="#cccccc" onClick={() => dispatch(dislikeBookAsync(data.id))}/>
+            <BsFillArrowDownSquareFill
+              size="20"
+              color={data.user_vote[0]?.vote === -1 ? "#fd6e81" : "#cccccc"}
+              onClick={() => dispatch(dislikeBookAsync(data.id))}
+            />
           </div>
           <div className={styles.title}>
             <h4>{data.title}</h4>

@@ -15,7 +15,7 @@ export const getCountryAsync = createAsyncThunk(
   }
 );
 
-export const bookSlice = createSlice({
+export const countrySlice = createSlice({
   name: "country",
   initialState,
 
@@ -34,4 +34,4 @@ export const bookSlice = createSlice({
 export const selectCountry = (state) => state.country.data;
 export const selectCountryStatus = (state) => state.country.status;
 
-export default bookSlice.reducer;
+export default countrySlice.reducer;
