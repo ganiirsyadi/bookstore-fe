@@ -3,6 +3,12 @@
   padding-top: 0;
 }
 
+.login_btn {
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 700;
+}
+
 .row {
   display: flex;
   justify-content: space-between;

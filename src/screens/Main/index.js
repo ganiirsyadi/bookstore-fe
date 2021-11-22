@@ -11,14 +11,45 @@ import { useState } from "react";
 import FormAddBook from "./FormAddBook";
 import { useSelector } from "react-redux";
 import { selectBook } from "../../features/book/bookSlice";
+import { signInWithGoogle, signOutUser } from "../../lib/auth";
+import { useEffect } from "react";
+import { supabase } from "../../lib/supabaseClient";
+import { useDispatch } from "react-redux";
+import { selectUser, signIn } from "../../features/user/userSlice";
 
+// Component
 function Main() {
+  const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
   const books = useSelector(selectBook);
+  const user = useSelector(selectUser);
+
+  useEffect(() => {
+    (async () => {
+      const user = await supabase.auth.user();
+      if (user) dispatch(signIn(user));
+    })();
+  }, [dispatch, books]);
 
   return (
     <>
-      <Header />
+      <Header>
+        {user ? (
+          <>
+            Welcome, {user.user_metadata.name}!{" "}
+            <span onClick={signOutUser} className={styles.login_btn}>
+              Logout
+            </span>
+          </>
+        ) : (
+          <>
+            <span onClick={signInWithGoogle} className={styles.login_btn}>
+              Login
+            </span>
+            {" "}untuk Vote dan Menambahkan buku favoritmu!
+          </>
+        )}
+      </Header>
       <div className={cn("container", styles.body)}>
         <div className={styles.row}>
           <h5>
