@@ -39,7 +39,7 @@ const Book = ({ data }) => {
             />
           </div>
           <div className={styles.title}>
-            <h4>{data.title}</h4>
+            <h4>{`${data.title} ${data.genre}`}</h4>
             <p>Book by {data.author}</p>
           </div>
         </div>
