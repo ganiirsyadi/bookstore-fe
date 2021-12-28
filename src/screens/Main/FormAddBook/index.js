@@ -84,6 +84,13 @@ const FormAddBook = ({ onSubmit }) => {
         {...register("imageUrl")}
         data-testid="image_url_field"
       />
+      <InputGroup
+        label="Genre"
+        type="text"
+        placeholder="Genre of the book"
+        required
+        {...register("genre")}
+      />
       <SelectGroup
         defaultValue="Indonesia"
         label="Country Publisher"
